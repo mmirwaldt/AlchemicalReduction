@@ -8,7 +8,9 @@ public class SequentialLoopAlchemicalReducer implements AlchemicalReducer {
             final char leftChar = stringBuilder.charAt(indexOfRightChar - 1);
             final char rightChar = stringBuilder.charAt(indexOfRightChar);
             if(canEliminate(leftChar, rightChar)) {
-                stringBuilder.delete(indexOfRightChar - 1, indexOfRightChar + 1);
+                final int inclusiveStartIndexOfLeftChar = indexOfRightChar - 1;
+                final int exclusiveEndIndexOfRightChar = indexOfRightChar + 1;
+                stringBuilder.delete(inclusiveStartIndexOfLeftChar, exclusiveEndIndexOfRightChar);
 
                 // we must ensure that indexOfRightChar never gets lower 1
                 indexOfRightChar = Math.max(1, indexOfRightChar - 1);
