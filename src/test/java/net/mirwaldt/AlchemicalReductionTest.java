@@ -8,7 +8,7 @@ public class AlchemicalReductionTest {
     private final AlchemicalReducer alchemicalReducer = new SequentialLoopAlchemicalReducer();
 
     @Test
-    void test_noReduction() {
+    void test_noElimination() {
         assertEquals("", alchemicalReducer.reduce(""));
         assertEquals("a", alchemicalReducer.reduce("a"));
         assertEquals("AA", alchemicalReducer.reduce("AA"));
@@ -16,7 +16,7 @@ public class AlchemicalReductionTest {
     }
 
     @Test
-    void test_oneReduction() {
+    void test_oneElimination() {
         assertEquals("", alchemicalReducer.reduce("aA"));
         assertEquals("", alchemicalReducer.reduce("Aa"));
         assertEquals("a", alchemicalReducer.reduce("aaA"));
