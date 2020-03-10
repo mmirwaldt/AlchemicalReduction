@@ -1,5 +1,9 @@
 package net.mirwaldt;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 public class SequentialLoopAlchemicalReducer implements AlchemicalReducer {
     public String reduce(String polymer) {
         StringBuilder stringBuilder = new StringBuilder(polymer);
