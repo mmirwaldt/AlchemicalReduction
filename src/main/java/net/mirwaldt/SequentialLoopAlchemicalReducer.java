@@ -29,6 +29,6 @@ public class SequentialLoopAlchemicalReducer implements AlchemicalReducer {
     }
 
     private boolean isSameChar(char leftChar, char rightChar) {
-        return Character.compare(leftChar, rightChar) == 0;
+        return Character.compare(Character.toUpperCase(leftChar), Character.toUpperCase(rightChar)) == 0;
     }
 }
