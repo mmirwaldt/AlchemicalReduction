@@ -9,7 +9,9 @@ public class SequentialLoopAlchemicalReducer implements AlchemicalReducer {
             final char rightChar = stringBuilder.charAt(indexOfRightChar);
             if(canEliminate(leftChar, rightChar)) {
                 stringBuilder.delete(indexOfRightChar - 1, indexOfRightChar + 1);
-                // indexOfRightChar´cannot be increased because rightChar was deleted
+
+                // we must ensure that indexOfRightChar never gets lower 1
+                indexOfRightChar = Math.max(1, indexOfRightChar - 1);
             } else {
                 indexOfRightChar++;
             }
