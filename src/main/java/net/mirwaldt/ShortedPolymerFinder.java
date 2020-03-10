@@ -10,8 +10,9 @@ public class ShortedPolymerFinder {
     public static void main(String[] args) throws IOException {
         final String input = ReadFileUtils.readStringFromInputStream(
                 SequentialLoopAlchemicalReducer.class.getResourceAsStream("/input.txt"));
-        final Set<String> uppercaseChars =
-                input.chars().mapToObj((charAsInt) -> String.valueOf(Character.toUpperCase((char) charAsInt))).collect(Collectors.toSet());
+        final Set<String> uppercaseChars = input.chars()
+                .mapToObj((charAsInt) -> String.valueOf(Character.toUpperCase((char) charAsInt)))
+                .collect(Collectors.toSet());
 
         int minLength = Integer.MAX_VALUE;
         String filteredCharPair = "";
