@@ -57,4 +57,10 @@ public class AlchemicalReductionTest {
         assertEquals("A", alchemicalReducer.reduce("CabBAcA"));
         assertEquals("BA", alchemicalReducer.reduce("BCabBAaAcA"));
     }
+
+    @Test
+    void test_complexExample() {
+        // Copied from puzzle
+        assertEquals("dabCBAcaDA", alchemicalReducer.reduce("dabAcCaCBAcCcaDA"));
+    }
 }
