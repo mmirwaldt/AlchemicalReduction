@@ -14,4 +14,14 @@ public class AlchemicalReductionTest {
         assertEquals("AA", alchemicalReducer.reduce("AA"));
         assertEquals("aB", alchemicalReducer.reduce("aB"));
     }
+
+    @Test
+    void test_oneReduction() {
+        assertEquals("", alchemicalReducer.reduce("aA"));
+        assertEquals("", alchemicalReducer.reduce("Aa"));
+        assertEquals("a", alchemicalReducer.reduce("aaA"));
+        assertEquals("A", alchemicalReducer.reduce("AaA"));
+        assertEquals("b", alchemicalReducer.reduce("baA"));
+        assertEquals("B", alchemicalReducer.reduce("AaB"));
+    }
 }
