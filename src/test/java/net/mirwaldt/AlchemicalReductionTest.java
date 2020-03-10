@@ -49,4 +49,12 @@ public class AlchemicalReductionTest {
         assertEquals("A", alchemicalReducer.reduce("abBAA"));
         assertEquals("BA", alchemicalReducer.reduce("BabBAaAA"));
     }
+
+    @Test
+    void test_twoEliminations_twoRecursions() {
+        assertEquals("", alchemicalReducer.reduce("CabBAc"));
+        assertEquals("B", alchemicalReducer.reduce("BCabBAc"));
+        assertEquals("A", alchemicalReducer.reduce("CabBAcA"));
+        assertEquals("BA", alchemicalReducer.reduce("BCabBAaAcA"));
+    }
 }
