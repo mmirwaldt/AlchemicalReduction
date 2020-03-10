@@ -33,4 +33,12 @@ public class AlchemicalReductionTest {
         assertEquals("A", alchemicalReducer.reduce("AaAbB"));
         assertEquals("b", alchemicalReducer.reduce("bBaAb"));
     }
+
+    @Test
+    void test_threeEliminations_simple() {
+        assertEquals("", alchemicalReducer.reduce("aAAaAa"));
+        assertEquals("", alchemicalReducer.reduce("AabBAa"));
+        assertEquals("aC", alchemicalReducer.reduce("aAabBCcC"));
+        assertEquals("AC", alchemicalReducer.reduce("AaAbBbBC"));
+    }
 }
