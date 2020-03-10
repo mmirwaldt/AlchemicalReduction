@@ -26,7 +26,7 @@ public class AlchemicalReductionTest {
     }
 
     @Test
-    void test_twoEliminations_simple() {
+    void test_twoEliminations_nonRecursive() {
         assertEquals("", alchemicalReducer.reduce("aAAa"));
         assertEquals("", alchemicalReducer.reduce("AabB"));
         assertEquals("a", alchemicalReducer.reduce("aAabB"));
@@ -35,7 +35,7 @@ public class AlchemicalReductionTest {
     }
 
     @Test
-    void test_threeEliminations_simple() {
+    void test_threeEliminations_nonRecursive() {
         assertEquals("", alchemicalReducer.reduce("aAAaAa"));
         assertEquals("", alchemicalReducer.reduce("AabBAa"));
         assertEquals("aC", alchemicalReducer.reduce("aAabBCcC"));
