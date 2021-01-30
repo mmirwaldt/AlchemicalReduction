@@ -5,7 +5,7 @@ import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 /**
- * This chemical reducer uses StringBuilder.replace()
+ * This chemical reducer uses the methods indexOf(...) and delete(...) of the class StringBuilder
  */
 public class StringBuilderFindAndDeleteAlchemicalReducer implements AlchemicalReducer {
     @Override
