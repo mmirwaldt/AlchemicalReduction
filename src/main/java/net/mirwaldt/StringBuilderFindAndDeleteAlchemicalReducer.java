@@ -13,7 +13,10 @@ public class StringBuilderFindAndDeleteAlchemicalReducer implements AlchemicalRe
         final SortedSet<Integer> lowerCaseLettersWithUpperCaseLetters =
                 finLowerCaseLettersWithUpperCaseLetters(polymer);
         final SortedSet<String> patterns = generatePatterns(lowerCaseLettersWithUpperCaseLetters);
+        return reduce(polymer, patterns);
+    }
 
+    private String reduce(String polymer, SortedSet<String> patterns) {
         final StringBuilder stringBuilder = new StringBuilder(polymer);
         boolean noPatternAnymore = false;
         while (!noPatternAnymore) {
