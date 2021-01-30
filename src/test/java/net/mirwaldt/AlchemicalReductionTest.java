@@ -10,13 +10,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AlchemicalReductionTest {
     private final static AlchemicalReducer sequentialLoopAlchemicalReducer =
-            new SequentialLoopAlchemicalReducer();
+            new ForwardsSequentialLoopAlchemicalReducer();
     private final static AlchemicalReducer stringBuilderFindAndDeleteAlchemicalReducer =
             new StringBuilderFindAndDeleteAlchemicalReducer();
+    private final static AlchemicalReducer backwardsSequentialLoopAlchemicalReducer =
+            new BackwardsSequentialLoopAlchemicalReducer();
 
     private static Stream<Arguments> alchemicalReducer() {
         return Stream.of(Arguments.of(sequentialLoopAlchemicalReducer),
-                Arguments.of(stringBuilderFindAndDeleteAlchemicalReducer));
+                Arguments.of(stringBuilderFindAndDeleteAlchemicalReducer),
+                Arguments.of(backwardsSequentialLoopAlchemicalReducer));
     }
 
     @ParameterizedTest

@@ -1,6 +1,9 @@
 package net.mirwaldt;
 
-public class SequentialLoopAlchemicalReducer implements AlchemicalReducer {
+/**
+ * This alchemical reducer loops forwards through the string without using StringBuilder.replace()
+ */
+public class ForwardsSequentialLoopAlchemicalReducer implements AlchemicalReducer {
     public String reduce(String polymer) {
         StringBuilder stringBuilder = new StringBuilder(polymer);
         int indexOfRightChar = 1;
