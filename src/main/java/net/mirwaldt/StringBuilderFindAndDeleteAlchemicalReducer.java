@@ -11,7 +11,7 @@ public class StringBuilderFindAndDeleteAlchemicalReducer implements AlchemicalRe
     @Override
     public String reduce(String polymer) {
         final SortedSet<Integer> lowerCaseLettersWithUpperCaseLetters =
-                finLowerCaseLettersWithUpperCaseLetters(polymer);
+                findLowerCaseLettersWithUpperCaseLetters(polymer);
         final SortedSet<String> patterns = generatePatterns(lowerCaseLettersWithUpperCaseLetters);
         return reduce(polymer, patterns);
     }
@@ -47,7 +47,7 @@ public class StringBuilderFindAndDeleteAlchemicalReducer implements AlchemicalRe
         stringBuilder.delete(index, index + pattern.length());
     }
 
-    private SortedSet<Integer> finLowerCaseLettersWithUpperCaseLetters(String polymer) {
+    private SortedSet<Integer> findLowerCaseLettersWithUpperCaseLetters(String polymer) {
         final SortedSet<Integer> letters = polymer.chars().boxed().collect(Collectors.toCollection(TreeSet::new));
         return letters.stream()
                 .filter(Character::isLowerCase)
