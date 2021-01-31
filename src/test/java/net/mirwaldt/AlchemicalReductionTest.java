@@ -15,13 +15,10 @@ class AlchemicalReductionTest {
             new StringBuilderFindAndDeleteAlchemicalReducer();
     private final static AlchemicalReducer backwardsSequentialLoopAlchemicalReducer =
             new BackwardsSequentialLoopAlchemicalReducer();
-    private final static AlchemicalReducer recursiveAlchemicalReducer =
-            new RecursiveAlchemicalReducer();
 
     private static Stream<Arguments> alchemicalReducer() {
         return Stream.of(Arguments.of(sequentialLoopAlchemicalReducer),
                 Arguments.of(stringBuilderFindAndDeleteAlchemicalReducer),
-                Arguments.of(backwardsSequentialLoopAlchemicalReducer),
                 Arguments.of(backwardsSequentialLoopAlchemicalReducer));
     }
 
