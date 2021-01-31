@@ -37,13 +37,13 @@ public class RecursiveAlchemicalReducer implements AlchemicalReducer {
         if (reduced.isEmpty()) {
             return recursiveReduce(remainingUnreducedAfterReduction, reduced);
         } else {
-            return reduceAndBacktrackToLastLetter(remainingUnreducedAfterReduction, reduced);
+            return reduceAndBacktrack(remainingUnreducedAfterReduction, reduced);
         }
     }
 
-    private String reduceAndBacktrackToLastLetter(String remainingUnreducedAfterReduction, String reducedLetters) {
-        final String backtracked = reducedLetters.substring(reducedLetters.length() - 1);
-        final String remainingReduced = reducedLetters.substring(0, reducedLetters.length() - 1);
+    private String reduceAndBacktrack(String remainingUnreducedAfterReduction, String reduced) {
+        final String backtracked = reduced.substring(reduced.length() - 1);
+        final String remainingReduced = reduced.substring(0, reduced.length() - 1);
         return recursiveReduce(backtracked + remainingUnreducedAfterReduction, remainingReduced);
     }
 }
