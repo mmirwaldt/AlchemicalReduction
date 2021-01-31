@@ -28,13 +28,14 @@ public class StringBuilderFindAndDeleteAlchemicalReducer implements AlchemicalRe
     private boolean reduce(SortedSet<String> patterns, StringBuilder stringBuilder) {
         boolean noPatternAnymore = true;
         for (String pattern : patterns) {
-            noPatternAnymore = replace(stringBuilder, noPatternAnymore, pattern);
+            noPatternAnymore = noPatternAnymore & replace(stringBuilder, pattern);
         }
         return noPatternAnymore;
     }
 
-    private boolean replace(StringBuilder stringBuilder, boolean noPatternAnymore, String pattern) {
+    private boolean replace(StringBuilder stringBuilder, String pattern) {
         int index = stringBuilder.indexOf(pattern);
+        boolean noPatternAnymore = true;
         while (-1 < index) {
             noPatternAnymore = false;
             reduce(stringBuilder, pattern, index);
@@ -58,8 +59,10 @@ public class StringBuilderFindAndDeleteAlchemicalReducer implements AlchemicalRe
     private SortedSet<String> generatePatterns(SortedSet<Integer> lowerCaseLettersWithUpperCaseLetters) {
         final SortedSet<String> patterns = new TreeSet<>();
         for (int l : lowerCaseLettersWithUpperCaseLetters) {
-            patterns.add(Character.toString(l) + Character.toString(Character.toUpperCase(l)));
-            patterns.add(Character.toString(Character.toUpperCase(l)) + Character.toString(l));
+            final String lowerCaseLetter = Character.toString(l);
+            final String upperCaseLetter = Character.toString(Character.toUpperCase(l));
+            patterns.add(lowerCaseLetter + upperCaseLetter);
+            patterns.add(upperCaseLetter + lowerCaseLetter);
         }
         return patterns;
     }
