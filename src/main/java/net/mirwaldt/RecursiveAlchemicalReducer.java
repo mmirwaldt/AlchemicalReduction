@@ -8,44 +8,38 @@ public class RecursiveAlchemicalReducer implements AlchemicalReducer {
         return recursiveReduce(polymer, "");
     }
 
-    public String recursiveReduce(String remainingUnreducedLetters, String reducedLetters) {
-        if (remainingUnreducedLetters.isEmpty()) {
-            return reducedLetters;
-        } else if (remainingUnreducedLetters.length() == 1) {
-            return recursiveReduce("", reducedLetters + remainingUnreducedLetters);
+    public String recursiveReduce(String remainingUnreduced, String reduced) {
+        if (remainingUnreduced.isEmpty()) {
+            return reduced;
+        } else if (remainingUnreduced.length() == 1) {
+            return recursiveReduce("", reduced + remainingUnreduced);
         } else {
-            if (canReduce(remainingUnreducedLetters.charAt(0), remainingUnreducedLetters.charAt(1))) {
-                return reduce(remainingUnreducedLetters, reducedLetters);
+            if (canReduce(remainingUnreduced.charAt(0), remainingUnreduced.charAt(1))) {
+                return reduce(remainingUnreduced, reduced);
             } else {
-                return skipOneLetter(remainingUnreducedLetters, reducedLetters);
+                return skipOneLetter(remainingUnreduced, reduced);
             }
         }
     }
 
-    private String skipOneLetter(String remainingUnreducedLetters, String reducedLetters) {
-        final String headOfRemainingUnreducedLetters =
-                remainingUnreducedLetters.substring(1);
-        final String tailOfRemainingUnreducedLetters =
-                reducedLetters + remainingUnreducedLetters.substring(0, 1);
-        return recursiveReduce(headOfRemainingUnreducedLetters, tailOfRemainingUnreducedLetters);
+    private String skipOneLetter(String remainingUnreduced, String reduced) {
+        final String headOfRemainingUnreduced = remainingUnreduced.substring(1);
+        final String tailOfRemainingUnreduced = reduced + remainingUnreduced.substring(0, 1);
+        return recursiveReduce(headOfRemainingUnreduced, tailOfRemainingUnreduced);
     }
 
-    private String reduce(String remainingUnreducedLetters, String reducedLetters) {
-        final String remainingLettersAfterReduction = remainingUnreducedLetters.substring(2);
-        if (reducedLetters.isEmpty()) {
-            return recursiveReduce(remainingLettersAfterReduction, reducedLetters);
+    private String reduce(String remainingUnreduced, String reduced) {
+        final String remainingUnreducedAfterReduction = remainingUnreduced.substring(2);
+        if (reduced.isEmpty()) {
+            return recursiveReduce(remainingUnreducedAfterReduction, reduced);
         } else {
-            return reduceAndBacktrackToLastLetter(remainingLettersAfterReduction, reducedLetters);
+            return reduceAndBacktrackToLastLetter(remainingUnreducedAfterReduction, reduced);
         }
     }
 
-    private String reduceAndBacktrackToLastLetter(
-            String remainingUnreducedLettersAfterReduction, String reducedLetters) {
-        final String backtrackedLetter = reducedLetters.substring(reducedLetters.length() - 1);
-        final String remainingLettersOfReducedLetters =
-                reducedLetters.substring(0, reducedLetters.length() - 1);
-        return recursiveReduce(
-                backtrackedLetter + remainingUnreducedLettersAfterReduction,
-                remainingLettersOfReducedLetters);
+    private String reduceAndBacktrackToLastLetter(String remainingUnreducedAfterReduction, String reducedLetters) {
+        final String backtracked = reducedLetters.substring(reducedLetters.length() - 1);
+        final String remainingReduced = reducedLetters.substring(0, reducedLetters.length() - 1);
+        return recursiveReduce(backtracked + remainingUnreducedAfterReduction, remainingReduced);
     }
 }
