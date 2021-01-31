@@ -42,8 +42,9 @@ public class RecursiveAlchemicalReducer implements AlchemicalReducer {
     }
 
     private String reduceAndBacktrack(String remainingUnreducedAfterReduction, String reduced) {
-        final String backtracked = reduced.substring(reduced.length() - 1);
-        final String remainingReduced = reduced.substring(0, reduced.length() - 1);
+        final int indexOfLastLetter = reduced.length() - 1;
+        final String backtracked = reduced.substring(indexOfLastLetter);
+        final String remainingReduced = reduced.substring(0, indexOfLastLetter);
         return recursiveReduce(backtracked + remainingUnreducedAfterReduction, remainingReduced);
     }
 }
