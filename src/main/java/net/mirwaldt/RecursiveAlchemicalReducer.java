@@ -16,7 +16,7 @@ public class RecursiveAlchemicalReducer implements AlchemicalReducer {
                 return left + right;
             }
         } else if(1 < left.length() || 1 < right.length()) {
-            return reduce(left.substring(0, left.length()-1), left.substring(left.length()-1))
+            return reduce(left.substring(0, 1), left.substring(1))
                     + reduce(right.substring(0, 1), right.substring(1));
         } else {
             return left + right;
