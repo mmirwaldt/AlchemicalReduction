@@ -22,11 +22,11 @@ public class RecursiveAlchemicalReducer implements AlchemicalReducer {
         if (canReduce(remainingUnreduced.charAt(0), remainingUnreduced.charAt(1))) {
             return reduce(remainingUnreduced, reduced);
         } else {
-            return skipOneLetter(remainingUnreduced, reduced);
+            return skipHeadOfRemainingUnreduced(remainingUnreduced, reduced);
         }
     }
 
-    private String skipOneLetter(String remainingUnreduced, String reduced) {
+    private String skipHeadOfRemainingUnreduced(String remainingUnreduced, String reduced) {
         final String headOfRemainingUnreduced = remainingUnreduced.substring(1);
         final String tailOfRemainingUnreduced = reduced + remainingUnreduced.substring(0, 1);
         return recursiveReduce(headOfRemainingUnreduced, tailOfRemainingUnreduced);
