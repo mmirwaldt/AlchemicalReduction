@@ -14,11 +14,15 @@ public class RecursiveAlchemicalReducer implements AlchemicalReducer {
         } else if (remainingUnreduced.length() == 1) {
             return recursiveReduce("", reduced + remainingUnreduced);
         } else {
-            if (canReduce(remainingUnreduced.charAt(0), remainingUnreduced.charAt(1))) {
-                return reduce(remainingUnreduced, reduced);
-            } else {
-                return skipOneLetter(remainingUnreduced, reduced);
-            }
+            return reduceRemaining(remainingUnreduced, reduced);
+        }
+    }
+
+    private String reduceRemaining(String remainingUnreduced, String reduced) {
+        if (canReduce(remainingUnreduced.charAt(0), remainingUnreduced.charAt(1))) {
+            return reduce(remainingUnreduced, reduced);
+        } else {
+            return skipOneLetter(remainingUnreduced, reduced);
         }
     }
 
