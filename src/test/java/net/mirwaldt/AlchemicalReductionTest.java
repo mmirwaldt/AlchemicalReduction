@@ -67,9 +67,9 @@ class AlchemicalReductionTest {
     @ParameterizedTest
     @MethodSource("alchemicalReducer")
     void test_twoEliminations_oneRecursion(AlchemicalReducer alchemicalReducer) {
-//        assertEquals("", alchemicalReducer.reduce("abBA"));
-//        assertEquals("B", alchemicalReducer.reduce("BabBA"));
-//        assertEquals("A", alchemicalReducer.reduce("abBAA"));
+        assertEquals("", alchemicalReducer.reduce("abBA"));
+        assertEquals("B", alchemicalReducer.reduce("BabBA"));
+        assertEquals("A", alchemicalReducer.reduce("abBAA"));
         assertEquals("BA", alchemicalReducer.reduce("BabBAaAA"));
     }
 

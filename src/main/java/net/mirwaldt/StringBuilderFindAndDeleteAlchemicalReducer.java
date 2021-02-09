@@ -59,8 +59,8 @@ public class StringBuilderFindAndDeleteAlchemicalReducer implements AlchemicalRe
     private SortedSet<String> generatePatterns(SortedSet<Integer> lowerCaseLettersWithUpperCaseLetters) {
         final SortedSet<String> patterns = new TreeSet<>();
         for (int l : lowerCaseLettersWithUpperCaseLetters) {
-            final String lowerCaseLetter = Character.toString(l);
-            final String upperCaseLetter = Character.toString(Character.toUpperCase(l));
+            final String lowerCaseLetter = Character.toString((char)l);
+            final String upperCaseLetter = Character.toString(Character.toUpperCase((char)l));
             patterns.add(lowerCaseLetter + upperCaseLetter);
             patterns.add(upperCaseLetter + lowerCaseLetter);
         }
