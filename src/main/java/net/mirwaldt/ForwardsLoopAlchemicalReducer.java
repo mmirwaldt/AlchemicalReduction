@@ -2,17 +2,16 @@ package net.mirwaldt;
 
 import net.mirwaldt.util.AlchemicalReducerUtil;
 
-import static net.mirwaldt.util.AlchemicalReducerUtil.*;
+import static net.mirwaldt.util.AlchemicalReducerUtil.canReduce;
 
 /**
- * This alchemical reducer loops backwards through the string and
- * therefore reduces the number of chars being moved left when two characters are removed from the stream.
+ * This alchemical reducer loops forwards through the string without using StringBuilder.replace()
  */
-public class BackwardsSequentialLoopAlchemicalReducer implements AlchemicalReducer {
+public class ForwardsLoopAlchemicalReducer implements AlchemicalReducer {
     public String reduce(String polymer) {
         final StringBuilder stringBuilder = new StringBuilder(polymer);
-        int indexOfRightChar = stringBuilder.length() - 1;
-        while(0 < indexOfRightChar && indexOfRightChar < stringBuilder.length()) {
+        int indexOfRightChar = 1;
+        while(indexOfRightChar < stringBuilder.length()) {
             indexOfRightChar = handleChars(stringBuilder, indexOfRightChar);
         }
         return stringBuilder.toString();
@@ -24,10 +23,10 @@ public class BackwardsSequentialLoopAlchemicalReducer implements AlchemicalReduc
         if(canReduce(leftChar, rightChar)) {
             AlchemicalReducerUtil.reduce(stringBuilder, indexOfRightChar);
 
-            // we must ensure that indexOfRightChar never gets the same value as stringBuilder.length()
-            indexOfRightChar = Math.min(stringBuilder.length() - 1, indexOfRightChar - 1);
+            // we must ensure that indexOfRightChar never gets lower 1
+            indexOfRightChar = Math.max(1, indexOfRightChar - 1);
         } else {
-            indexOfRightChar--;
+            indexOfRightChar++;
         }
         return indexOfRightChar;
     }

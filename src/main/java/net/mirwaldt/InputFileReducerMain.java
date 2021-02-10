@@ -7,7 +7,7 @@ import java.io.IOException;
 public class InputFileReducerMain {
     public static void main(String[] args) throws IOException {
         String input = ReadFileUtils.readStringFromInputStream(
-                ForwardsSequentialLoopAlchemicalReducer.class.getResourceAsStream("/input.txt"));
-        System.out.println("Number of units: " + new ForwardsSequentialLoopAlchemicalReducer().reduce(input).length());
+                ForwardsLoopAlchemicalReducer.class.getResourceAsStream("/input.txt"));
+        System.out.println("Number of units: " + new ForwardsLoopAlchemicalReducer().reduce(input).length());
     }
 }
