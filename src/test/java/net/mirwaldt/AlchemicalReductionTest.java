@@ -12,7 +12,7 @@ class AlchemicalReductionTest {
     private final static AlchemicalReducer sequentialLoopAlchemicalReducer =
             new ForwardsSequentialLoopAlchemicalReducer();
     private final static AlchemicalReducer stringBuilderFindAndDeleteAlchemicalReducer =
-            new StringBuilderFindAndDeleteAlchemicalReducer();
+            new IndexOfAndDeleteAlchemicalReducer();
     private final static AlchemicalReducer backwardsSequentialLoopAlchemicalReducer =
             new BackwardsSequentialLoopAlchemicalReducer();
     private final static AlchemicalReducer recursiveAlchemicalReducer =

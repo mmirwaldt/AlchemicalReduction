@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 /**
  * This chemical reducer uses the methods indexOf(...) and delete(...) of the class StringBuilder
  */
-public class StringBuilderFindAndDeleteAlchemicalReducer implements AlchemicalReducer {
+public class IndexOfAndDeleteAlchemicalReducer implements AlchemicalReducer {
     @Override
     public String reduce(String polymer) {
         final SortedSet<Integer> lowerCaseLettersWithUpperCaseLetters =
